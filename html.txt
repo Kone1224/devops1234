@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Order Admin Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        h2 {
+            color: #555;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        li a {
+            display: block;
+            padding: 10px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            text-decoration: none;
+            color: #333;
+            transition: background-color 0.3s ease;
+            border-radius: 5px;
+        }
+
+        li a:hover {
+            background-color: #f2f2f2;
+        }
+
+        .box {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 15px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 600px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Food Order Admin Dashboard</h1>
+    
+    <div class="box">
+        <h2>Food Items</h2>
+        <ul>
+            <li><a href="list_fooditems.html">View All Food Items</a></li>
+            <li><a href="add_fooditem.html">Add New Food Item</a></li>
+        </ul>
+    </div>
+
+    <div class="box">
+        <h2>Cuisines</h2>
+        <ul>
+            <li><a href="list_cuisines.html">View All Cuisines</a></li>
+            <li><a href="add_cuisine.html">Add New Cuisine</a></li>
+        </ul>
+    </div>
+
+    <div class="box">
+        <h2>Categories</h2>
+        <ul>
+            <li><a href="list_categories.html">View All Categories</a></li>
+            <li><a href="add_category.html">Add New Category</a></li>
+        </ul>
+    </div>
+
+    <div class="box">
+        <h2>Restaurants</h2>
+        <ul>
+            <li><a href="list_restaurants.html">View All Restaurants</a></li>
+            <li><a href="add_restaurant.html">Add New Restaurant</a></li>
+        </ul>
+    </div>
+
+    <div class="box">
+        <h2>Orders</h2>
+        <ul>
+            <li><a href="#">View All Orders</a></li>
+        </ul>
+    </div>
+
+    <div class="box">
+        <h2>Users</h2>
+        <ul>
+            <li><a href="#">Manage Users</a></li>
+        </ul>
+    </div>
+</body>
+</html>
+
