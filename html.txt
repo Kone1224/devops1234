@@ -1,10 +1,12 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Food Order Admin Dashboard</title>
     <style>
+
+     
         body {
             font-family: Arial, sans-serif;
             background-color: #f0f0f0;
@@ -12,6 +14,9 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            background: url('https://images.squarespace-cdn.com/content/v1/5e795a0c72ed9820e962164b/ce59f773-9323-4b88-bfc8-68283d3c02b6/Animae+-+Spring+2021+-+Food-265.jpg') no-repeat center center fixed;
+            background-size: cover;
+
         }
 
         h1 {
@@ -58,6 +63,40 @@
             width: 80%;
             max-width: 600px;
         }
+
+        form {
+            margin-top: 20px;
+        }
+
+        input, select {
+            margin-bottom: 10px;
+            padding: 10px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #555;
+        }
+
+        #orderConfirmation {
+            margin-top: 20px;
+            color: green;
+        }
+
+        #orderError {
+            margin-top: 20px;
+            color: red;
+        }
     </style>
 </head>
 <body>
@@ -100,6 +139,25 @@
         <ul>
             <li><a href="#">View All Orders</a></li>
         </ul>
+        <form id="orderForm">
+            <h3>Place an Order</h3>
+            <label for="customerName">Name:</label>
+            <input type="text" id="customerName" name="customerName" required>
+
+            <label for="foodItem">Food Item:</label>
+            <select id="foodItem" name="foodItem" required>
+                <option value="Pizza">Pizza</option>
+                <option value="Burger">Burger</option>
+                <option value="Sushi">Sushi</option>
+            </select>
+
+            <label for="quantity">Quantity:</label>
+            <input type="number" id="quantity" name="quantity" min="1" required>
+
+            <button type="submit">Place Order</button>
+        </form>
+        <div id="orderConfirmation"></div>
+        <div id="orderError"></div>
     </div>
 
     <div class="box">
@@ -108,6 +166,43 @@
             <li><a href="#">Manage Users</a></li>
         </ul>
     </div>
+
+    <script>
+        document.getElementById('orderForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const customerName = document.getElementById('customerName').value;
+            const foodItem = document.getElementById('foodItem').value;
+            const quantity = document.getElementById('quantity').value;
+
+            const orderData = {
+                customerName,
+                foodItem,
+                quantity
+            };
+
+            fetch('https://yourserver.com/api/orders', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(orderData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    document.getElementById('orderConfirmation').textContent = `Thank you, ${customerName}! Your order for ${quantity} ${foodItem}(s) has been placed.`;
+                    document.getElementById('orderError').textContent = '';
+                } else {
+                    document.getElementById('orderError').textContent = 'There was an issue placing your order. Please try again.';
+                }
+            })
+            .catch(error => {
+                document.getElementById('orderError').textContent = 'There was an issue placing your order. Please try again.';
+            });
+        });
+    </script>
 </body>
 </html>
+
 
